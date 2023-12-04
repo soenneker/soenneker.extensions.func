@@ -12,4 +12,12 @@ public static class FuncExtensions
     {
         return new Task<TResult>(func);
     }
+
+    /// <summary>
+    /// Equivalent to <code>Task.Run(func)</code>
+    /// </summary>
+    public static Task<TResult> RunAsync<TResult>(this Func<TResult> func)
+    {
+        return Task.Run(func);
+    }
 }
