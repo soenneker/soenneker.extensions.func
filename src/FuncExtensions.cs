@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 
 namespace Soenneker.Extensions.Func;
 
@@ -16,8 +17,8 @@ public static class FuncExtensions
     /// <summary>
     /// Equivalent to <code>Task.Run(func)</code>
     /// </summary>
-    public static Task<TResult> RunAsync<TResult>(this Func<TResult> func)
+    public static Task<TResult> RunAsync<TResult>(this Func<TResult> func, CancellationToken cancellationToken = default)
     {
-        return Task.Run(func);
+        return Task.Run(func, cancellationToken);
     }
 }
