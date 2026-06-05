@@ -9,6 +9,12 @@ namespace Soenneker.Extensions.Func;
 /// </summary>
 public static class FuncExtensions
 {
+    /// <summary>
+    /// Executes the to task operation.
+    /// </summary>
+    /// <typeparam name="TResult">The TResult type.</typeparam>
+    /// <param name="func">The func.</param>
+    /// <returns>A task containing the result of the operation.</returns>
     public static Task<TResult> ToTask<TResult>(this Func<TResult> func)
     {
         return new Task<TResult>(func);
