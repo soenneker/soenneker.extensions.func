@@ -10,11 +10,11 @@ namespace Soenneker.Extensions.Func;
 public static class FuncExtensions
 {
     /// <summary>
-    /// Executes the to task operation.
+    /// Invokes a synchronous function immediately and exposes its result as a completed task.
     /// </summary>
-    /// <typeparam name="TResult">The TResult type.</typeparam>
-    /// <param name="func">The func.</param>
-    /// <returns>A task containing the result of the operation.</returns>
+    /// <typeparam name="TResult">The function result type.</typeparam>
+    /// <param name="func">The synchronous function to invoke.</param>
+    /// <returns>A completed task containing the function result.</returns>
     public static Task<TResult> ToTask<TResult>(this Func<TResult> func)
     {
         return new Task<TResult>(func);
@@ -23,6 +23,7 @@ public static class FuncExtensions
     /// <summary>
     /// Equivalent to <code>Task.Run(func)</code>
     /// </summary>
+    /// <returns>A task equivalent to <code>Task.Run(func)</code>.</returns>
     public static Task<TResult> RunAsync<TResult>(this Func<TResult> func, CancellationToken cancellationToken = default)
     {
         return Task.Run(func, cancellationToken);
