@@ -10,11 +10,11 @@ namespace Soenneker.Extensions.Func;
 public static class FuncExtensions
 {
     /// <summary>
-    /// Invokes a synchronous function immediately and exposes its result as a completed task.
+    /// Wraps a synchronous function in a task that has not been scheduled or started.
     /// </summary>
     /// <typeparam name="TResult">The function result type.</typeparam>
     /// <param name="func">The synchronous function to invoke.</param>
-    /// <returns>A completed task containing the function result.</returns>
+    /// <returns>A task in the <see cref="TaskStatus.Created"/> state. The caller must start it before awaiting completion.</returns>
     public static Task<TResult> ToTask<TResult>(this Func<TResult> func)
     {
         return new Task<TResult>(func);
